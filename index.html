@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhantomInk • Disappearing Ink | 2026</title>
+    <title>PhantomInk • Disappearing Ink</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
         
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .heading-font { font-family: 'Space Grotesk', sans-serif; }
 
-        .hero-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1133 100%);
+        section {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+            display: flex;
+            align-items: center;
         }
 
         .logo {
@@ -26,23 +29,17 @@
             -webkit-text-fill-color: transparent;
         }
 
-        section { padding: 140px 0 100px; }
-        .card { 
-            background: rgba(255,255,255,0.06); 
-            backdrop-filter: blur(20px); 
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        .card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(20px);
         }
-        .card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px -12px rgb(103 232 249 / 0.2); }
 
-        /* Smooth fade-in animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+        .nav-link {
+            transition: all 0.4s ease;
         }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .nav-link:hover {
+            color: #67e8f9;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -53,157 +50,300 @@
         <div class="max-w-7xl mx-auto px-10 py-6 flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="w-9 h-9 bg-gradient-to-br from-cyan-300 to-violet-300 rounded-2xl flex items-center justify-center text-2xl">🧪</div>
-                <span class="logo tracking-tighter">PhantomInk</span>
+                <span class="logo">PhantomInk</span>
             </div>
 
             <div class="hidden md:flex items-center gap-9 text-sm font-medium">
-                <a href="#intro" class="hover:text-[#67e8f9] transition-colors">Introduction</a>
-                <a href="#ingredients" class="hover:text-[#67e8f9] transition-colors">Ingredients</a>
-                <a href="#process" class="hover:text-[#67e8f9] transition-colors">Process</a>
-                <a href="#flow" class="hover:text-[#67e8f9] transition-colors">Flow Diagram</a>
-                <a href="#quality" class="hover:text-[#67e8f9] transition-colors">Quality & Storage</a>
-                <a href="#video" class="hover:text-[#67e8f9] transition-colors">Demo Video</a>
-                <a href="#applications" class="hover:text-[#67e8f9] transition-colors">Applications</a>
-                <a href="#order" class="hover:text-[#67e8f9] transition-colors font-semibold">Get The Kit</a>
+                <a href="#intro" class="nav-link">Introduction</a>
+                <a href="#ingredients" class="nav-link">Ingredients</a>
+                <a href="#process" class="nav-link">Process</a>
+                <a href="#flow" class="nav-link">Flow Diagram</a>
+                <a href="#quality" class="nav-link">Quality & Storage</a>
+                <a href="#video" class="nav-link">Demo Video</a>
+                <a href="#applications" class="nav-link">Applications</a>
+                <a href="#order" class="nav-link font-semibold">Get The Kit</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section id="intro" class="hero-bg">
+    <!-- 1. INTRODUCTION -->
+    <section id="intro" class="bg-[#0f172a]">
         <div class="max-w-7xl mx-auto px-10">
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                <div class="space-y-10">
-                    <div class="inline-flex items-center gap-2 px-5 py-2 bg-white/5 rounded-3xl text-xs tracking-widest">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-6 py-3 bg-white/5 rounded-3xl text-sm">
                         CHEMISTRY PROTOTYPE PROJECT 2026 • BATCH E2
                     </div>
-
-                    <h1 class="text-7xl md:text-8xl leading-none font-bold heading-font tracking-tighter">
-                        PhantomInk
-                    </h1>
-                    <h2 class="text-6xl md:text-7xl leading-none font-bold heading-font tracking-tighter text-[#67e8f9]">
-                        Disappearing Ink
-                    </h2>
-
-                    <p class="text-xl text-slate-300 max-w-md">
-                        A breathtaking pH-responsive ink that turns deep blue to completely invisible in seconds. Pure chemistry magic.
+                    <h1 class="text-7xl font-bold heading-font mt-8 leading-none">PhantomInk</h1>
+                    <h2 class="text-6xl font-bold heading-font text-[#67e8f9] mt-3">Disappearing Ink</h2>
+                    
+                    <p class="mt-10 text-xl text-slate-300 max-w-lg">
+                        The ultimate pH-responsive ink that magically turns from deep ocean blue to completely invisible in seconds. 
+                        This project showcases acid-base chemistry in a dramatic and engaging way. 
+                        Created as a prototype by Batch E2 students, it demonstrates how simple chemical principles can create stunning visual effects.
                     </p>
 
                     <button onclick="document.getElementById('order').scrollIntoView({ behavior: 'smooth' })" 
-                            class="px-10 py-5 bg-gradient-to-r from-cyan-400 to-violet-400 text-slate-900 font-semibold rounded-3xl flex items-center gap-3 hover:scale-105 transition-all">
-                        <i class="fas fa-shopping-bag"></i>
-                        Get The Kit (50 ml • ₹149)
+                            class="mt-12 px-10 py-5 bg-gradient-to-r from-cyan-400 to-violet-400 text-slate-900 font-semibold rounded-3xl flex items-center gap-3 hover:scale-105 transition-all">
+                        <i class="fas fa-shopping-bag"></i> Get The Kit (50 ml - ₹149)
                     </button>
 
-                    <div class="bg-white/5 border border-white/10 rounded-3xl p-8">
-                        <h3 class="uppercase text-xs tracking-widest mb-6 text-slate-400">Project Team - Batch E2</h3>
-                        <div class="space-y-4 text-sm">
-                            <div class="flex justify-between"><span class="text-slate-400">PRN-202401040232</span><span>Shivam Anekar</span></div>
-                            <div class="flex justify-between"><span class="text-slate-400">PRN-202401040350</span><span>Chetan Gore</span></div>
-                            <div class="flex justify-between"><span class="text-slate-400">PRN-202401040362</span><span>Sreyash Donewar</span></div>
+                    <div class="mt-16 bg-white/5 border border-white/10 rounded-3xl p-8">
+                        <h3 class="text-sm uppercase tracking-widest mb-6 text-slate-400">Project Team - Batch E2</h3>
+                        <div class="grid grid-cols-1 gap-4 text-sm">
+                            <div class="flex justify-between"><span class="text-slate-400">PRN-202401040232</span> <span>Shivam Anekar</span></div>
+                            <div class="flex justify-between"><span class="text-slate-400">PRN-202401040350</span> <span>Chetan Gore</span></div>
+                            <div class="flex justify-between"><span class="text-slate-400">PRN-202401040362</span> <span>Sreyash Donewar</span></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Beautiful Hero Image -->
-                <div class="flex justify-center">
-                    <img src="https://images.unsplash.com/photo-1611915387288-fd8d2f5f928b?w=800" 
-                         alt="Disappearing Ink Magic" 
-                         class="rounded-3xl shadow-2xl border border-cyan-300/30 max-h-[520px] object-cover">
+                <div class="text-center">
+                    <div class="bg-gradient-to-br from-cyan-500/10 to-violet-500/10 border border-cyan-300/30 rounded-3xl p-16">
+                        <div class="text-8xl mb-8">🪄</div>
+                        <div class="text-5xl font-bold heading-font text-[#67e8f9]">BLUE → INVISIBLE</div>
+                        <p class="mt-8 text-slate-400">Watch the magic happen in seconds</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- INGREDIENTS -->
-    <section id="ingredients" class="bg-[#0f172a]">
+    <!-- 2. INGREDIENTS -->
+    <section id="ingredients" class="bg-[#1a1633]">
         <div class="max-w-6xl mx-auto px-10">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold heading-font">Ingredients & Chemical Science</h2>
-            </div>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="card rounded-3xl p-8 text-center">
-                    <img src="https://images.unsplash.com/photo-1584305574643-8c0e3c3a6c6f?w=400" alt="Thymolphthalein" class="mx-auto h-32 rounded-2xl mb-6">
-                    <h3 class="text-xl font-semibold">Thymolphthalein</h3>
-                    <p class="text-sm text-cyan-300">1 g</p>
-                    <p class="text-slate-400 mt-3">The magic molecule that changes color with pH.</p>
+            <h2 class="text-5xl font-bold heading-font text-center mb-16">Ingredients & Chemical Science</h2>
+            <div class="grid md:grid-cols-2 gap-12 text-lg">
+                <div class="space-y-12">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-cyan-300">Thymolphthalein (1 gram)</h3>
+                        <p class="mt-4 text-slate-300">
+                            This is the heart of the disappearing ink. It is a pH indicator that remains colorless in neutral or acidic conditions 
+                            but turns into a rich, deep blue color when the pH rises above 9.3. When the pH drops again (due to air or acid), 
+                            it becomes colorless once more — creating the magical disappearing effect.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-cyan-300">Ethyl Alcohol (100 mL)</h3>
+                        <p class="mt-4 text-slate-300">
+                            Used as the primary solvent because thymolphthalein does not dissolve easily in water. It ensures complete dissolution 
+                            and helps the ink dry quickly when applied on paper or fabric.
+                        </p>
+                    </div>
                 </div>
-                <div class="card rounded-3xl p-8 text-center">
-                    <img src="https://images.unsplash.com/photo-1625772299848-1d3a4c0c5c3e?w=400" alt="Ethyl Alcohol" class="mx-auto h-32 rounded-2xl mb-6">
-                    <h3 class="text-xl font-semibold">Ethyl Alcohol</h3>
-                    <p class="text-sm text-cyan-300">100 mL</p>
-                    <p class="text-slate-400 mt-3">Perfect solvent for the indicator.</p>
-                </div>
-                <div class="card rounded-3xl p-8 text-center">
-                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400" alt="Distilled Water" class="mx-auto h-32 rounded-2xl mb-6">
-                    <h3 class="text-xl font-semibold">Distilled Water</h3>
-                    <p class="text-sm text-cyan-300">900 mL</p>
-                    <p class="text-slate-400 mt-3">Pure dilution for perfect balance.</p>
-                </div>
-                <div class="card rounded-3xl p-8 text-center">
-                    <img src="https://images.unsplash.com/photo-1611677272458-2e3e3d3d3d3d?w=400" alt="NaOH" class="mx-auto h-32 rounded-2xl mb-6">
-                    <h3 class="text-xl font-semibold">3M NaOH</h3>
-                    <p class="text-sm text-cyan-300">10 mL</p>
-                    <p class="text-slate-400 mt-3">Creates the alkaline environment.</p>
+                <div class="space-y-12">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-cyan-300">Distilled Water (900 mL)</h3>
+                        <p class="mt-4 text-slate-300">
+                            Dilutes the concentrated solution to make approximately 1 liter of usable ink. Distilled water is essential to prevent 
+                            any impurities from interfering with the delicate pH balance.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-cyan-300">Sodium Hydroxide 3M (10 mL)</h3>
+                        <p class="mt-4 text-slate-300">
+                            A strong base that raises the pH of the solution to around 10–11, triggering the blue color. It must be added carefully 
+                            with proper safety precautions as it is caustic in concentrated form.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROCESS -->
-    <section id="process" class="bg-[#1a1633]">
+    <!-- 3. PROCESS -->
+    <section id="process" class="bg-[#0f172a]">
         <div class="max-w-6xl mx-auto px-10">
-            <h2 class="text-5xl font-bold heading-font text-center mb-16">Step-by-Step Process</h2>
+            <h2 class="text-5xl font-bold heading-font text-center mb-16">Step-by-Step Preparation Process</h2>
             <div class="grid md:grid-cols-4 gap-8">
-                <div class="card rounded-3xl p-10 text-center">01 • Dissolve 1g thymolphthalein in 100 mL ethyl alcohol</div>
-                <div class="card rounded-3xl p-10 text-center">02 • Add 900 mL distilled water</div>
-                <div class="card rounded-3xl p-10 text-center">03 • Slowly add 10 mL 3M NaOH</div>
-                <div class="card rounded-3xl p-10 text-center">04 • Store in sealed bottle</div>
+                <div class="card rounded-3xl p-10">
+                    <div class="text-4xl font-bold text-cyan-400 mb-4">01</div>
+                    <h4 class="font-semibold text-xl">Dissolve 1 gram of thymolphthalein in 100 mL ethyl alcohol.</h4>
+                    <p class="mt-6 text-slate-300">Stir continuously until the solution becomes completely clear.</p>
+                </div>
+                <div class="card rounded-3xl p-10">
+                    <div class="text-4xl font-bold text-cyan-400 mb-4">02</div>
+                    <h4 class="font-semibold text-xl">Add 900 mL of distilled water slowly while stirring.</h4>
+                    <p class="mt-6 text-slate-300">The mixture may appear milky white at this stage. This is normal.</p>
+                </div>
+                <div class="card rounded-3xl p-10">
+                    <div class="text-4xl font-bold text-cyan-400 mb-4">03</div>
+                    <h4 class="font-semibold text-xl">Carefully add 10 mL of 3M Sodium Hydroxide.</h4>
+                    <p class="mt-6 text-slate-300">Add drop by drop while stirring. The solution will instantly turn deep blue.</p>
+                </div>
+                <div class="card rounded-3xl p-10">
+                    <div class="text-4xl font-bold text-cyan-400 mb-4">04</div>
+                    <h4 class="font-semibold text-xl">Transfer to a sealed container.</h4>
+                    <p class="mt-6 text-slate-300">Your disappearing ink is now ready for use and demonstration.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- BEAUTIFUL HORIZONTAL FLOW DIAGRAM -->
-    <section id="flow" class="bg-[#0f172a]">
+    <!-- 4. FLOW DIAGRAM -->
+    <section id="flow" class="bg-[#1a1633]">
         <div class="max-w-6xl mx-auto px-10 text-center">
-            <h2 class="text-5xl font-bold heading-font mb-12">Process Flow</h2>
-            <div class="card rounded-3xl p-12 overflow-x-auto">
-                <div id="mermaid" class="mx-auto" style="min-width: 900px;">
+            <h2 class="text-5xl font-bold heading-font mb-12">Process Flow Diagram</h2>
+            <div class="card rounded-3xl p-16">
+                <div id="mermaid" class="mx-auto" style="max-width: 1100px;">
                     flowchart LR
                         A["🧪 1g Thymolphthalein"] --> B["🥃 100 mL Ethyl Alcohol"]
-                        B --> C["Stir until dissolved"]
+                        B --> C["Stir until fully dissolved"]
                         C --> D["💧 Add 900 mL Distilled Water"]
                         D --> E["⚗️ Slowly add 10 mL 3M NaOH"]
                         E --> F["🔵 Deep Blue Ink Ready"]
                         F --> G["📦 Store in sealed bottle"]
-                        style A fill:#67e8f9, color:#0f172a, stroke:#67e8f9
-                        style F fill:#c4b5fd, color:#0f172a, stroke:#c4b5fd
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- QUALITY, VIDEO, APPLICATIONS, ORDER sections remain the same as last version (50 ml pricing) -->
-    <!-- (To keep this response clean, I have kept the Order section exactly as in the previous final code) -->
+    <!-- 5. QUALITY & STORAGE -->
+    <section id="quality" class="bg-[#0f172a]">
+        <div class="max-w-6xl mx-auto px-10">
+            <div class="grid md:grid-cols-3 gap-16">
+                <div>
+                    <h2 class="text-5xl font-bold heading-font">Quality Control</h2>
+                    <p class="mt-10 text-lg text-slate-300">
+                        Every batch is carefully tested to ensure the pH remains between 10–11, the blue color is vibrant, 
+                        and the ink disappears within 15 seconds when exposed to breath (CO₂) or mild acid like vinegar.
+                    </p>
+                </div>
+                <div>
+                    <h2 class="text-5xl font-bold heading-font">Storage</h2>
+                    <p class="mt-10 text-lg text-slate-300">
+                        Store the ink in a cool, dark place inside an amber or dark bottle. When properly sealed, 
+                        the solution remains stable and effective for more than 12 months.
+                    </p>
+                </div>
+                <div>
+                    <h2 class="text-5xl font-bold heading-font">Packaging</h2>
+                    <p class="mt-10 text-lg text-slate-300">
+                        Available in elegant 50 ml dropper bottles with clear safety labels, batch number, 
+                        and a QR code that links directly to this website.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- ORDER SECTION (50 ml) -->
-    <section id="order" class="bg-[#0f172a]">
+    <!-- 6. DEMO VIDEO -->
+    <section id="video" class="bg-[#1a1633]">
+        <div class="max-w-5xl mx-auto px-10 text-center">
+            <h2 class="text-5xl font-bold heading-font mb-12">Watch Our Creation Process</h2>
+            <div class="aspect-video rounded-3xl overflow-hidden border border-cyan-400/30">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/nNtWn0Ytyug" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. APPLICATIONS -->
+    <section id="applications" class="bg-[#0f172a]">
+        <div class="max-w-6xl mx-auto px-10">
+            <h2 class="text-5xl font-bold heading-font text-center mb-16">Real-World Applications</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="card rounded-3xl p-10">
+                    <h4 class="text-2xl font-semibold mb-6">Magic Shows & Stage Performances</h4>
+                    <p class="text-slate-300">Write secret messages or drawings that vanish instantly in front of the audience, creating a powerful wow effect.</p>
+                </div>
+                <div class="card rounded-3xl p-10">
+                    <h4 class="text-2xl font-semibold mb-6">Educational Demonstrations</h4>
+                    <p class="text-slate-300">Excellent tool for schools and colleges to teach pH indicators, acid-base reactions, and chemical equilibrium in an exciting way.</p>
+                </div>
+                <div class="card rounded-3xl p-10">
+                    <h4 class="text-2xl font-semibold mb-6">Creative Arts & Fabric Design</h4>
+                    <p class="text-slate-300">Create temporary artistic designs on T-shirts or fabric that disappear after some time, offering a unique experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. ORDER / GET THE KIT -->
+    <section id="order" class="bg-[#1a1633]">
         <div class="max-w-4xl mx-auto px-10">
             <div class="text-center mb-16">
                 <h2 class="text-5xl font-bold heading-font">Get Your PhantomInk Kit</h2>
                 <p class="text-slate-400 mt-4">50 ml Ready-to-Use Bottle • ₹149 only</p>
             </div>
-            <!-- Order form code is same as previous final version -->
-            <!-- (Copy the order form + success message from my previous message if needed) -->
+
+            <div class="card rounded-3xl p-12">
+                <form id="orderForm" onsubmit="placeOrder(event)" class="space-y-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-2">Full Name</label>
+                            <input type="text" id="name" required class="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 focus:outline-none focus:border-cyan-400">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" required class="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 focus:outline-none focus:border-cyan-400">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-2">Email Address</label>
+                        <input type="email" id="email" required class="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 focus:outline-none focus:border-cyan-400">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm text-slate-400 mb-2">Full Delivery Address</label>
+                        <textarea id="address" rows="3" required class="w-full bg-white/10 border border-white/20 rounded-3xl px-6 py-4 focus:outline-none focus:border-cyan-400"></textarea>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-2">Quantity (50 ml bottle)</label>
+                            <select id="quantity" class="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 focus:outline-none focus:border-cyan-400">
+                                <option value="1">1 Bottle - ₹149</option>
+                                <option value="2">2 Bottles - ₹279</option>
+                                <option value="3">3 Bottles - ₹399</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-2">City / Pincode</label>
+                            <input type="text" id="city" required placeholder="Pimpri, Maharashtra" class="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 focus:outline-none focus:border-cyan-400">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-7 bg-gradient-to-r from-cyan-400 to-violet-400 text-slate-900 font-bold text-xl rounded-3xl hover:scale-105 transition-all">
+                        Place Order • Cash on Delivery Available
+                    </button>
+                </form>
+            </div>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="hidden mt-12 text-center">
+                <div class="card rounded-3xl p-16">
+                    <i class="fas fa-check-circle text-7xl text-green-400 mb-8"></i>
+                    <h3 class="text-4xl font-bold heading-font">Order Placed Successfully!</h3>
+                    <p class="text-slate-300 mt-6">Thank you! Your 50 ml PhantomInk kit has been ordered.</p>
+                    
+                    <div class="mt-12 bg-white/5 rounded-2xl p-10">
+                        <p class="font-medium mb-6">Payment Options</p>
+                        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                            <div class="bg-white/10 px-10 py-5 rounded-2xl flex items-center gap-4">
+                                <i class="fas fa-truck text-cyan-400 text-2xl"></i>
+                                <span>Cash on Delivery (COD)</span>
+                            </div>
+                            <div class="bg-white/10 px-10 py-5 rounded-2xl flex items-center gap-4">
+                                <i class="fas fa-qrcode text-violet-400 text-2xl"></i>
+                                <span>UPI Payment</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="window.location.reload()" class="mt-12 px-10 py-4 border border-white/30 rounded-2xl hover:bg-white/10">
+                        Place Another Order
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-black py-20 border-t border-white/10">
+    <footer class="bg-black py-16 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-10 text-center">
-            <div class="flex justify-center items-center gap-4 mb-8">
+            <div class="flex justify-center items-center gap-4 mb-6">
                 <div class="w-8 h-8 bg-gradient-to-br from-cyan-300 to-violet-300 rounded-2xl flex items-center justify-center">🧪</div>
-                <span class="logo text-3xl">PhantomInk</span>
+                <span class="logo text-2xl">PhantomInk</span>
             </div>
             <p class="text-slate-400">Chemistry Prototype Project 2026 • Batch E2</p>
             <p class="text-xs text-slate-500 mt-8">
@@ -220,18 +360,8 @@
             document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Beautiful horizontal Mermaid
         mermaid.initialize({ startOnLoad: true });
         window.onload = () => mermaid.init(undefined, document.querySelectorAll("#mermaid"));
-
-        // Smooth fade-in on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.2 });
-        fadeElements.forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
