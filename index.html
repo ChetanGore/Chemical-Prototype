@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhantomInk • Disappearing Ink | Chemistry Prototype 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+        
+        :root {
+            --neon-blue: #00f7ff;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0a0a2e 0%, #1a0033 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(0, 247, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(0, 247, 255, 0.12) 0%, transparent 50%);
+            animation: inkPulse 8s infinite ease-in-out;
+            pointer-events: none;
+        }
+        
+        @keyframes inkPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 20px var(--neon-blue),
+                         0 0 40px var(--neon-blue);
+        }
+        
+        .section-header {
+            position: relative;
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #00f7ff, #a020f0);
+            border-radius: 9999px;
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgb(0 247 255 / 0.25);
+        }
+        
+        .flow-diagram {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a2e] text-white">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-[#00f7ff] to-[#a020f0] rounded-2xl flex items-center justify-center text-2xl">🧪</div>
+                <h1 class="heading-font text-3xl tracking-tighter neon-text">PhantomInk</h1>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+                <a href="#intro" class="hover:text-[#00f7ff] transition-colors">INTRODUCTION</a>
+                <a href="#ingredients" class="hover:text-[#00f7ff] transition-colors">INGREDIENTS</a>
+                <a href="#process" class="hover:text-[#00f7ff] transition-colors">PROCESS</a>
+                <a href="#flow" class="hover:text-[#00f7ff] transition-colors">FLOW DIAGRAM</a>
+                <a href="#quality" class="hover:text-[#00f7ff] transition-colors">QUALITY & STORAGE</a>
+                <a href="#video" class="hover:text-[#00f7ff] transition-colors">DEMO VIDEO</a>
+                <a href="#applications" class="hover:text-[#00f7ff] transition-colors">APPLICATIONS</a>
+                <a href="#faq" class="hover:text-[#00f7ff] transition-colors">FAQ + REVIEWS</a>
+            </div>
+            
+            <a href="#contact" 
+               class="px-8 py-3 bg-white text-black font-semibold rounded-3xl flex items-center gap-2 hover:bg-[#00f7ff] hover:text-black transition-all">
+                <i class="fas fa-flask"></i>
+                GET THE KIT
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO / INTRODUCTION -->
+    <section id="intro" class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-6 py-2 bg-white/10 backdrop-blur-md rounded-3xl text-sm font-medium border border-white/20">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00f7ff] opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-[#00f7ff]"></span>
+                    </span>
+                    CHEMISTRY PROTOTYPE PROJECT 2026 • BATCH E2
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl font-bold leading-none heading-font neon-text">
+                    PHANTOMINK<br>
+                    <span class="text-[#a020f0]">Disappearing Ink</span>
+                </h1>
+                
+                <p class="text-2xl text-gray-300 max-w-lg">
+                    The ultimate pH-responsive ink that vanishes in seconds.<br>
+                    Built with science. Presented with cinematic precision.
+                </p>
+                
+                <div class="flex items-center gap-6">
+                    <button onclick="document.getElementById('video').scrollIntoView({ behavior: 'smooth' })"
+                            class="px-10 py-5 bg-gradient-to-r from-[#00f7ff] to-[#a020f0] text-black font-bold text-lg rounded-3xl flex items-center gap-3 hover:scale-105 transition-all">
+                        <i class="fas fa-play"></i>
+                        WATCH THE MAGIC
+                    </button>
+                    
+                    <div class="text-sm">
+                        <div class="font-medium">Created by</div>
+                        <div class="text-[#00f7ff]">Group E2 • 2026</div>
+                    </div>
+                </div>
+                
+                <!-- Group Members -->
+                <div class="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
+                    <h3 class="text-lg font-semibold mb-6 flex items-center gap-2">
+                        <i class="fas fa-users"></i> PROJECT TEAM
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
+                        <div>
+                            <div class="font-mono text-[#00f7ff]">PRN-202401040232</div>
+                            <div class="font-semibold">Shivam Anekar</div>
+                        </div>
+                        <div>
+                            <div class="font-mono text-[#00f7ff]">PRN-202401040350</div>
+                            <div class="font-semibold">Chetan Gore</div>
+                        </div>
+                        <div>
+                            <div class="font-mono text-[#00f7ff]">PRN-202401040362</div>
+                            <div class="font-semibold">Sreyash Donewar</div>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-xs text-gray-400">Batch E2 • Department of Chemistry • Prototype 2026</p>
+                </div>
+                
+                <div class="text-gray-400 text-sm flex items-center gap-8">
+                    <div><i class="fas fa-flask mr-2"></i>Thymolphthalein pH Indicator</div>
+                    <div><i class="fas fa-magic mr-2"></i>Disappears in seconds</div>
+                    <div><i class="fas fa-recycle mr-2"></i>100% Reversible</div>
+                </div>
+            </div>
+            
+            <!-- Cinematic Visual -->
+            <div class="relative hidden md:block">
+                <div class="aspect-square bg-gradient-to-br from-[#00f7ff]/10 to-[#a020f0]/10 rounded-[4rem] flex items-center justify-center border border-[#00f7ff]/30">
+                    <div class="text-center">
+                        <div class="text-8xl mb-6 animate-bounce">🪄</div>
+                        <div class="text-5xl font-bold heading-font tracking-tighter neon-text">BLUE → INVISIBLE</div>
+                        <div class="text-lg text-gray-300 mt-4">Watch it vanish before your eyes</div>
+                        <div class="mt-12 text-xs uppercase tracking-[4px] font-medium">pH Magic • 2026</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INGREDIENTS -->
+    <section id="ingredients" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <span class="px-5 py-2 bg-[#00f7ff]/10 text-[#00f7ff] rounded-3xl text-sm font-medium">RAW MATERIALS</span>
+                <h2 class="section-header text-5xl font-bold heading-font mt-4">Precise Ingredients &amp; Chemical Science</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Thymolphthalein -->
+                <div class="bg-white/5 backdrop-blur-2xl rounded-3xl p-8 card-hover border border-white/10">
+                    <div class="w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center text-3xl mb-6">🧬</div>
+                    <h4 class="text-xl font-semibold">Thymolphthalein (C<sub>28</sub>H<sub>30</sub>O<sub>4</sub>)</h4>
+                    <p class="text-[#00f7ff] text-sm mb-3">pH Indicator • 1.0 g</p>
+                    <p class="text-gray-300 text-sm leading-relaxed">Colorless in acidic/neutral conditions. Turns intense blue above pH 9.3–10.5. The heart of the disappearing effect.</p>
+                </div>
+                
+                <!-- Ethanol -->
+                <div class="bg-white/5 backdrop-blur-2xl rounded-3xl p-8 card-hover border border-white/10">
+                    <div class="w-14 h-14 bg-green-500/20 rounded-2xl flex items-center justify-center text-3xl mb-6">🧪</div>
+                    <h4 class="text-xl font-semibold">Ethyl Alcohol (C<sub>2</sub>H<sub>5</sub>OH)</h4>
+                    <p class="text-[#00f7ff] text-sm mb-3">Solvent • 100 mL</p>
+                    <p class="text-gray-300 text-sm leading-relaxed">Dissolves thymolphthalein powder perfectly. Volatile and helps quick drying.</p>
+                </div>
+                
+                <!-- Water -->
+                <div class="bg-white/5 backdrop-blur-2xl rounded-3xl p-8 card-hover border border-white/10">
+                    <div class="w-14 h-14 bg-cyan-500/20 rounded-2xl flex items-center justify-center text-3xl mb-6">💧</div>
+                    <h4 class="text-xl font-semibold">Distilled Water (H<sub>2</sub>O)</h4>
+                    <p class="text-[#00f7ff] text-sm mb-3">Diluent • 900 mL</p>
+                    <p class="text-gray-300 text-sm leading-relaxed">Creates the final solution volume. Must be pure to avoid premature pH interference.</p>
+                </div>
+                
+                <!-- NaOH -->
+                <div class="bg-white/5 backdrop-blur-2xl rounded-3xl p-8 card-hover border border-white/10">
+                    <div class="w-14 h-14 bg-red-500/20 rounded-2xl flex items-center justify-center text-3xl mb-6">⚠️</div>
+                    <h4 class="text-xl font-semibold">Sodium Hydroxide (NaOH)</h4>
+                    <p class="text-[#00f7ff] text-sm mb-3">3 Molar • 10 mL</p>
+                    <p class="text-gray-300 text-sm leading-relaxed">Raises pH to ~10–11 instantly. Turns the solution deep blue. Handle with care (caustic base).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STEP-BY-STEP PROCESS -->
+    <section id="process" class="py-24 bg-[#0a0a2e]">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-header text-5xl font-bold heading-font">Step-by-Step Laboratory Process</h2>
+                <p class="text-gray-400 mt-4">Follow these exact steps as demonstrated in the official video</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="relative bg-white/5 rounded-3xl p-8">
+                    <div class="absolute -top-4 -left-4 w-8 h-8 bg-[#00f7ff] text-black rounded-2xl flex items-center justify-center font-bold">01</div>
+                    <h5 class="font-semibold text-xl">Dissolve 1 g thymolphthalein in 100 mL ethyl alcohol</h5>
+                    <p class="mt-6 text-sm text-gray-400">Stir until completely clear. Alcohol acts as the primary solvent.</p>
+                </div>
+                <div class="relative bg-white/5 rounded-3xl p-8">
+                    <div class="absolute -top-4 -left-4 w-8 h-8 bg-[#00f7ff] text-black rounded-2xl flex items-center justify-center font-bold">02</div>
+                    <h5 class="font-semibold text-xl">Add 900 mL distilled water</h5>
+                    <p class="mt-6 text-sm text-gray-400">Solution may turn milky white — this is normal.</p>
+                </div>
+                <div class="relative bg-white/5 rounded-3xl p-8">
+                    <div class="absolute -top-4 -left-4 w-8 h-8 bg-[#00f7ff] text-black rounded-2xl flex items-center justify-center font-bold">03</div>
+                    <h5 class="font-semibold text-xl">Slowly add 10 mL of 3 M NaOH</h5>
+                    <p class="mt-6 text-sm text-gray-400">Solution instantly turns dark blue. pH reaches ~10–11.</p>
+                </div>
+                <div class="relative bg-white/5 rounded-3xl p-8">
+                    <div class="absolute -top-4 -left-4 w-8 h-8 bg-[#00f7ff] text-black rounded-2xl flex items-center justify-center font-bold">04</div>
+                    <h5 class="font-semibold text-xl">Store in sealed bottle</h5>
+                    <p class="mt-6 text-sm text-gray-400">Your disappearing ink is now ready to use!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS FLOW DIAGRAM -->
+    <section id="flow" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-12">
+                <h2 class="section-header text-5xl font-bold heading-font">Process Flow Diagram</h2>
+            </div>
+            <div class="flow-diagram rounded-3xl p-12 mx-auto max-w-5xl">
+                <div id="mermaid-diagram" class="text-center">
+                    flowchart LR
+                        A[Thymolphthalein 1g] --> B[100 mL Ethyl Alcohol]
+                        B --> C[Stir until dissolved]
+                        C --> D[Add 900 mL Distilled Water]
+                        D --> E[Slowly add 10 mL 3M NaOH]
+                        E --> F[Dark Blue Ink Ready]
+                        F --> G[Store in sealed container]
+                        style A fill:#00f7ff, color:#000
+                        style F fill:#a020f0, color:#fff
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUALITY CONTROL, STORAGE & PACKING -->
+    <section id="quality" class="py-24 bg-[#0a0a2e]">
+        <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-3 gap-12">
+            <div>
+                <h2 class="section-header text-5xl font-bold heading-font">Quality Control</h2>
+                <ul class="mt-8 space-y-6 text-gray-300">
+                    <li class="flex gap-4"><i class="fas fa-check-circle text-[#00f7ff] mt-1"></i> pH verified at 10–11</li>
+                    <li class="flex gap-4"><i class="fas fa-check-circle text-[#00f7ff] mt-1"></i> Color intensity test on fabric</li>
+                    <li class="flex gap-4"><i class="fas fa-check-circle text-[#00f7ff] mt-1"></i> Disappearance time &lt; 15 seconds with breath/vinegar</li>
+                    <li class="flex gap-4"><i class="fas fa-check-circle text-[#00f7ff] mt-1"></i> Zero residue after 2 minutes</li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="section-header text-5xl font-bold heading-font">Storage</h2>
+                <div class="mt-8 bg-white/5 p-8 rounded-3xl">
+                    <p class="text-lg">Store in an amber glass bottle in a cool, dark place. Shelf life: 12+ months when sealed. Keep away from acids.</p>
+                </div>
+            </div>
+            <div>
+                <h2 class="section-header text-5xl font-bold heading-font">Packing</h2>
+                <div class="mt-8 flex flex-col gap-4">
+                    <div class="flex items-center gap-6 bg-white/5 p-6 rounded-3xl">
+                        <div class="text-4xl">🧴</div>
+                        <div>100 mL / 500 mL / 1 L HDPE dropper bottles with child-safe cap</div>
+                    </div>
+                    <div class="text-xs text-gray-400">Label includes safety warnings, batch number, and QR code to this website.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO DEMO -->
+    <section id="video" class="py-24 bg-black">
+        <div class="max-w-5xl mx-auto px-8">
+            <div class="text-center mb-12">
+                <h2 class="section-header text-5xl font-bold heading-font">Watch Our Creation in Action</h2>
+                <p class="text-gray-400">Original video by the team • Full demonstration of disappearing ink</p>
+            </div>
+            <div class="aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl border border-[#00f7ff]/30">
+                <iframe width="100%" height="100%" 
+                        src="https://www.youtube.com/embed/nNtWn0Ytyug" 
+                        title="How To Make Disappearing Ink - In Hindi At Home" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+            </div>
+            <p class="text-center text-xs text-gray-400 mt-6">Video: https://youtu.be/nNtWn0Ytyug</p>
+        </div>
+    </section>
+
+    <!-- APPLICATIONS -->
+    <section id="applications" class="py-24 bg-[#0a0a2e]">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-header text-5xl font-bold heading-font">Real-World Applications</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-[#00f7ff]/10 to-transparent border border-[#00f7ff]/20 rounded-3xl p-8">
+                    <h4 class="font-semibold text-2xl">Magic &amp; Illusion Shows</h4>
+                    <p class="mt-4">Write secret messages that vanish instantly on stage.</p>
+                </div>
+                <div class="bg-gradient-to-br from-[#a020f0]/10 to-transparent border border-[#a020f0]/20 rounded-3xl p-8">
+                    <h4 class="font-semibold text-2xl">Educational Science Kits</h4>
+                    <p class="mt-4">Perfect for schools and STEM workshops to teach pH indicators.</p>
+                </div>
+                <div class="bg-gradient-to-br from-purple-500/10 to-transparent border border-purple-400/20 rounded-3xl p-8">
+                    <h4 class="font-semibold text-2xl">Creative Fabric Art</h4>
+                    <p class="mt-4">Temporary designs on T-shirts that disappear after the show.</p>
+                </div>
+                <div class="bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-400/20 rounded-3xl p-8">
+                    <h4 class="font-semibold text-2xl">Invisible Ink Spy Games</h4>
+                    <p class="mt-4">Kids &amp; adults love writing hidden notes that only reappear with special revealers.</p>
+                </div>
+                <div class="bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-400/20 rounded-3xl p-8">
+                    <h4 class="font-semibold text-2xl">Laboratory Demonstrations</h4>
+                    <p class="mt-4">Live chemistry demos on acid-base reactions.</p>
+                </div>
+                <div class="bg-gradient-to-br from-pink-500/10 to-transparent border border-pink-400/20 rounded-3xl p-8">
+                    <h4 class="font-semibold text-2xl">Product Photography &amp; Marketing</h4>
+                    <p class="mt-4">Dramatic before-after visuals for brands.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ + REVIEWS + COST -->
+    <section id="faq" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="grid md:grid-cols-2 gap-16">
+                <!-- FAQ -->
+                <div>
+                    <h2 class="text-5xl font-bold heading-font mb-10">Frequently Asked Questions</h2>
+                    <div class="space-y-6">
+                        <details class="bg-white/5 rounded-3xl p-6">
+                            <summary class="font-medium cursor-pointer">How long does the ink last before disappearing?</summary>
+                            <p class="mt-4 text-gray-400">5–15 seconds naturally (with breath). Instantly with vinegar.</p>
+                        </details>
+                        <details class="bg-white/5 rounded-3xl p-6">
+                            <summary class="font-medium cursor-pointer">Is it safe for skin/fabric?</summary>
+                            <p class="mt-4 text-gray-400">Yes when diluted. Always do a patch test. Not for ingestion.</p>
+                        </details>
+                        <details class="bg-white/5 rounded-3xl p-6">
+                            <summary class="font-medium cursor-pointer">Can I make it at home?</summary>
+                            <p class="mt-4 text-gray-400">Yes — full recipe is on this site. Adult supervision required for NaOH.</p>
+                        </details>
+                    </div>
+                </div>
+                
+                <!-- Reviews & Cost -->
+                <div>
+                    <h2 class="text-5xl font-bold heading-font mb-10">Reviews &amp; Pricing</h2>
+                    
+                    <!-- Fake Reviews -->
+                    <div class="mb-12">
+                        <div class="italic">"Best chemistry project I’ve ever seen. The ink actually disappears like magic!"</div>
+                        <div class="text-xs text-gray-400 mt-2">— Prof. R. Sharma, HOD Chemistry, 2026</div>
+                        
+                        <div class="italic mt-8">"We used it for our college fest magic show — crowd went crazy!"</div>
+                        <div class="text-xs text-gray-400 mt-2">— Event Team, MIT Pune</div>
+                    </div>
+                    
+                    <!-- Cost -->
+                    <div class="bg-gradient-to-br from-[#00f7ff]/10 to-[#a020f0]/10 rounded-3xl p-8">
+                        <h4 class="font-semibold text-2xl mb-6">Cost to Make 1 Liter</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between"><span>Thymolphthalein (1g)</span><span class="text-[#00f7ff]">₹280</span></div>
+                            <div class="flex justify-between"><span>Ethanol + Water</span><span class="text-[#00f7ff]">₹90</span></div>
+                            <div class="flex justify-between"><span>NaOH (3M)</span><span class="text-[#00f7ff]">₹60</span></div>
+                            <div class="flex justify-between border-t border-white/30 pt-3 font-semibold"><span>TOTAL</span><span class="text-3xl">₹430</span></div>
+                            <div class="text-xs text-gray-400">Retail price for 100 mL bottle: ₹199</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CTA -->
+    <footer class="bg-black border-t border-white/10 py-16">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <p class="text-2xl font-light">PhantomInk — Making chemistry disappear… in the best way possible.</p>
+            <p class="text-xs text-gray-500 mt-8">© 2026 • Group E2 • Shivam Anekar • Chetan Gore • Sreyash Donewar</p>
+            <p class="text-xs text-gray-500">Built as a cinematic showcase with ❤️ by Grok</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script already loaded
+        mermaid.initialize({ startOnLoad: true });
+        
+        // Make mermaid diagram render
+        window.onload = () => {
+            mermaid.init(undefined, document.querySelectorAll('#mermaid-diagram'));
+        };
+        
+        // Smooth scroll for navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        console.log('%c✅ PhantomInk cinematic website loaded successfully!', 'color:#00f7ff; font-size:14px; font-weight:bold');
+    </script>
+</body>
+</html>
